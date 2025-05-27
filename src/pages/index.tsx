@@ -107,7 +107,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4 text-gray-900">Ready to strengthen your integrity framework?</h2>
             <p className="text-lg text-gray-600 mb-8">
-              Let's discuss how our gaming-grade compliance approach can benefit your organization.
+              Let us discuss how our gaming-grade compliance approach can benefit your organization.
             </p>
             <div className="flex justify-center space-x-4">
               <a href="/contact" className="bg-purple-600 text-white px-6 py-3 rounded hover:bg-purple-700 transition-colors">
@@ -212,4 +212,4 @@ const whyLane = [
     title: 'Practical Implementation',
     description: 'We focus on frameworks that work in practice, not just on paper.',
   },
-]
+]// Force update
