@@ -1,7 +1,107 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { GetStaticProps } from 'next'
+import { getPosts, Post, buildImageUrl } from '../../lib/sanity'
 
-export default function Home() {
+interface HomePageProps {
+  insights: Post[]
+}
+
+function InsightsSection({ insights }: { insights: Post[] }) {
+  if (!insights || insights.length === 0) {
+    return null // Section disappears if no posts
+  }
+
+  return (
+    <section className="bg-purple-50 py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Latest Insights</h2>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Expert analysis and insights across real estate, law firms, accounting, government, and sports integrity.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          {insights.slice(0, 3).map((post) => (
+            <article key={post._id} className="bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all">
+              {/* Article Image */}
+              {post.mainImage?.asset?.url ? (
+                <div className="aspect-video w-full bg-gray-100">
+                  <img 
+                    src={buildImageUrl(post.mainImage.asset.url, 400, 225, 75)} 
+                    alt={post.mainImage.alt || post.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="aspect-video w-full bg-gradient-to-br from-purple-100 to-gray-100 flex items-center justify-center">
+                  <div className="text-center text-gray-400">
+                    <svg className="w-10 h-10 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+              )}
+              
+              <div className="p-6">
+                {/* Categories */}
+                {post.categories && post.categories.length > 0 && (
+                  <div className="flex gap-2 mb-3">
+                    {post.categories.slice(0, 2).map((category) => (
+                      <span key={category._id} className="bg-purple-600 text-white px-2 py-1 rounded text-xs font-medium">
+                        {category.title}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                
+                {/* Title & Excerpt */}
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
+                  <Link href={`/insights/${post.slug.current}`} className="hover:text-purple-600 transition-colors">
+                    {post.title}
+                  </Link>
+                </h3>
+                
+                {post.excerpt && (
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                )}
+                
+                {/* Author & Date */}
+                <div className="flex items-center text-xs text-gray-500">
+                  <span>{post.author?.name || 'Lane Consulting'}</span>
+                  <span className="mx-2">•</span>
+                  <span>{new Date(post.publishedAt).toLocaleDateString('en-AU', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric'
+                  })}</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+        
+        {/* View All Link */}
+        <div className="text-center">
+          <Link 
+            href="/insights" 
+            className="inline-flex items-center bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium"
+          >
+            View All Insights
+            <svg className="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default function Home({ insights }: HomePageProps) {
   return (
     <>
       <Head>
@@ -107,6 +207,9 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Latest Insights Section */}
+        <InsightsSection insights={insights} />
+
         {/* CTA Section */}
         <section className="bg-purple-50 py-16 px-4">
           <div className="max-w-4xl mx-auto text-center">
@@ -185,6 +288,28 @@ export default function Home() {
       </div>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    // Fetch recent insights for the homepage
+    const insights = await getPosts('lane', 3)
+    
+    return {
+      props: {
+        insights,
+      },
+      revalidate: 300, // Revalidate every 5 minutes
+    }
+  } catch (error) {
+    console.error('Error fetching insights for homepage:', error)
+    return {
+      props: {
+        insights: [],
+      },
+      revalidate: 300,
+    }
+  }
 }
 
 const sectors = [
