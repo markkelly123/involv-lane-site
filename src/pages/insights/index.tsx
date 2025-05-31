@@ -29,7 +29,7 @@ export default function Insights({ posts }: InsightsPageProps) {
           {posts.length === 0 ? (
             <div className="text-center text-gray-400 py-12">
               <p className="text-xl mb-4">No posts found for Lane Consulting.</p>
-              <p className="mb-4">Create content in Sanity Studio and tag it with 'lane' site.</p>
+              <p className="mb-4">Create content in Sanity Studio and tag it with &apos;lane&apos; site.</p>
               <p>
                 <Link href="http://localhost:3333" className="text-blue-400 hover:underline">
                   Open Sanity Studio
