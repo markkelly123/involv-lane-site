@@ -327,11 +327,11 @@ const sectors = [
   },
   {
     title: 'Government',
-    description: 'Governance frameworks and integrity systems for public sector organizations.',
+    description: 'Governance frameworks and integrity systems for public sector organisations.',
   },
   {
     title: 'Sports Integrity',
-    description: 'Anti-corruption and match-fixing prevention programs for sporting organizations.',
+    description: 'Anti-corruption and match-fixing prevention programs for sporting organisations.',
   },
 ]
 
