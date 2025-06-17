@@ -79,6 +79,14 @@ export interface Post {
   }
   postType: 'article' | 'whitepaper' | 'report'
   estimatedReadingTime?: number
+  
+  // NEW: Enhanced whitepaper/report fields
+  downloadUrl?: string
+  fileSize?: string
+  fileFormat?: 'PDF' | 'DOCX' | 'PPTX' | 'XLSX'
+  pageCount?: number
+  requiresRegistration?: boolean
+  downloadCount?: number
 }
 
 export interface CaseStudy {
@@ -89,20 +97,46 @@ export interface CaseStudy {
   body: any // Portable Text
   client: string
   industry: string
-  challenge: string
-  solution: string
-  results: string
+  challenge: string  // Note: keeping as string for backward compatibility
+  solution: string   // Note: keeping as string for backward compatibility  
+  results: string    // Note: keeping as string for backward compatibility
   publishedAt: string
   sites: string[]
   categories: { _id: string; title: string }[] // Resolved category objects
   tags: string[]
   jurisdictions: string[]
+  featured?: boolean
+  confidential?: boolean
   mainImage?: {
     asset: {
       url: string
     }
     alt: string
   }
+  
+  // NEW: Enhanced fields
+  clientSize?: 'small' | 'medium' | 'large' | 'government'
+  timeline?: {
+    duration: string
+    startDate?: string
+    completionDate?: string
+    phases?: Array<{
+      phase: string
+      duration: string
+      description: string
+    }>
+  }
+  outcome?: {
+    status: 'success' | 'ongoing' | 'phase-complete'
+    metrics?: Array<{
+      metric: string
+      value: string
+      improvement?: string
+    }>
+    clientSatisfaction?: number
+    testimonial?: string
+  }
+  servicesProvided?: string[]
 }
 
 // Fetch functions
@@ -138,7 +172,15 @@ export async function getPosts(site?: string, limit?: number, postType?: string)
     featured,
     mainImage{asset->{_id, url}, alt},
     postType,
-    estimatedReadingTime
+    estimatedReadingTime,
+    
+    // NEW: Enhanced whitepaper/report fields
+    downloadUrl,
+    fileSize,
+    fileFormat,
+    pageCount,
+    requiresRegistration,
+    downloadCount
   }`
   
   return await sanity.fetch(query)
@@ -189,6 +231,7 @@ export async function getCaseStudies(site?: string, limit?: number): Promise<Cas
     body,
     client,
     industry,
+    clientSize,
     challenge,
     solution,
     results,
@@ -197,7 +240,14 @@ export async function getCaseStudies(site?: string, limit?: number): Promise<Cas
     categories[]->{title, _id},
     tags,
     jurisdictions,
-    mainImage{asset->{_id, url}, alt}
+    featured,
+    confidential,
+    mainImage{asset->{_id, url}, alt},
+    
+    // NEW: Enhanced fields
+    timeline,
+    outcome,
+    servicesProvided
   }`
   
   return await sanity.fetch(query)
@@ -289,6 +339,60 @@ export async function getPostsByJurisdiction(site: string, jurisdiction: string,
     tags,
     mainImage{asset->{_id, url}, alt},
     postType
+  }`
+  
+  return await sanity.fetch(query)
+}
+
+// Helper: Get whitepapers with download info
+export async function getWhitepapers(site?: string, limit?: number): Promise<Post[]> {
+  return getPosts(site, limit, 'whitepaper')
+}
+
+// Helper: Get case studies by industry
+export async function getCaseStudiesByIndustry(site: string, industry: string, limit?: number): Promise<CaseStudy[]> {
+  let query = `*[_type == "caseStudy" && "${site}" in sites && industry == "${industry}"] | order(publishedAt desc)`
+  
+  if (limit) {
+    query += ` [0...${limit}]`
+  }
+  
+  query += ` {
+    _id,
+    title,
+    slug,
+    excerpt,
+    client,
+    industry,
+    timeline,
+    outcome,
+    publishedAt,
+    mainImage{asset->{_id, url}, alt},
+    featured
+  }`
+  
+  return await sanity.fetch(query)
+}
+
+// Helper: Get successful case studies with testimonials
+export async function getSuccessfulCaseStudies(site: string, limit?: number): Promise<CaseStudy[]> {
+  let query = `*[_type == "caseStudy" && "${site}" in sites && outcome.status == "success"] | order(publishedAt desc)`
+  
+  if (limit) {
+    query += ` [0...${limit}]`
+  }
+  
+  query += ` {
+    _id,
+    title,
+    slug,
+    excerpt,
+    client,
+    industry,
+    timeline,
+    outcome,
+    publishedAt,
+    mainImage{asset->{_id, url}, alt}
   }`
   
   return await sanity.fetch(query)
