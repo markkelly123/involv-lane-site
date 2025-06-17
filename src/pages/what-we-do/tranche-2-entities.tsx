@@ -137,7 +137,7 @@ const Tranche2EntitiesPage: NextPage = () => {
                 Understanding Tranche 2 Requirements
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Tranche 2 of Australia's Anti-Money Laundering and Counter-Terrorism Financing (AML/CTF) regime extends 
+                Tranche 2 of Australia&apos;s Anti-Money Laundering and Counter-Terrorism Financing (AML/CTF) regime extends 
                 compliance obligations to designated non-financial businesses and professions (DNFBPs). These entities now 
                 face complex regulatory requirements that demand specialised expertise and tailored solutions.
               </p>

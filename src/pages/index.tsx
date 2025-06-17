@@ -57,7 +57,7 @@ const HomePage: NextPage<HomePageProps> = ({ posts }) => {
   return (
     <>
       <Head>
-        <title>Lane Consulting | Australia's Most Trusted AML Advisory for Tranche 2 Entities</title>
+        <title>Lane Consulting | Australia&apos;s Most Trusted AML Advisory for Tranche 2 Entities</title>
         <meta name="description" content="Expert AML compliance advisory for Tranche 2 entities including real estate professionals, lawyers, accountants, and jewellers. Navigate complex regulatory requirements with confidence." />
         <meta name="keywords" content="Tranche 2, AML compliance, real estate AML, legal practice compliance, accounting firm AML, AUSTRAC, Lane Consulting" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -87,7 +87,7 @@ const HomePage: NextPage<HomePageProps> = ({ posts }) => {
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           {/* Main Headline */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight mb-6">
-            Australia's most trusted AML advisory for{' '}
+            Australia&apos;s most trusted AML advisory for{' '}
             <span className="text-[#89b3c5] font-serif italic drop-shadow-lg">Tranche 2 entities</span>
           </h1>
 

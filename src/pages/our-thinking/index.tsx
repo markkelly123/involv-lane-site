@@ -52,7 +52,7 @@ export default function OurThinking({ posts }: OurThinkingPageProps) {
                 Insights Coming Soon
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-                We're preparing comprehensive insights and analysis on AML compliance 
+                We&apos;re preparing comprehensive insights and analysis on AML compliance 
                 and Tranche 2 requirements. Check back soon for expert guidance.
               </p>
               <div className="space-y-4">

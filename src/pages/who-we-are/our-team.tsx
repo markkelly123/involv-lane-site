@@ -98,7 +98,7 @@ const OurTeamPage: NextPage = () => {
             </h1>
             <p className="text-xl text-gray-300 leading-relaxed mb-8 max-w-3xl">
               Led by recognised industry experts with decades of experience in governance, risk, 
-              compliance, and regulatory advisory across Australia's most complex sectors.
+              compliance, and regulatory advisory across Australia&apos;s most complex sectors.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="bg-[#66899b] text-white px-8 py-4 rounded-md text-lg font-medium hover:bg-[#5a7a8a] transition-colors duration-200 shadow-lg">
@@ -143,7 +143,7 @@ const OurTeamPage: NextPage = () => {
                     className="flex items-center justify-center text-gray-600 hover:text-[#66899b] transition-colors"
                   >
                     <Mail className="w-4 h-4 mr-2" />
-                    louise@laneconsulting.com.au
+                    louise@laneconsultingandadvisory.com
                   </Link>
                   <Link 
                     href="https://linkedin.com/in/louise-lane"
@@ -187,7 +187,7 @@ const OurTeamPage: NextPage = () => {
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-6">
                   Louise excels at developing tailored frameworks and sustainable compliance solutions that protect 
-                  business interests while satisfying stringent obligations. With particular insight into Australia's 
+                  business interests while satisfying stringent obligations. With particular insight into Australia&apos;s 
                   changing AML laws and fluid gaming environment, she delivers strategic guidance that transforms 
                   regulatory challenges into operational advantages.
                 </p>
@@ -271,7 +271,7 @@ const OurTeamPage: NextPage = () => {
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               A track record of excellence in compliance advisory, regulatory guidance, 
-              and strategic leadership across Australia's most complex industries.
+              and strategic leadership across Australia&apos;s most complex industries.
             </p>
           </div>
 
@@ -296,7 +296,7 @@ const OurTeamPage: NextPage = () => {
             Ready to Work with Australia's Leading AML Expert?
           </h2>
           <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Benefit from Louise's extensive experience and proven expertise in guiding organisations 
+            Benefit from Louise&apos;s extensive experience and proven expertise in guiding organisations 
             through complex compliance challenges and regulatory requirements.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -311,7 +311,7 @@ const OurTeamPage: NextPage = () => {
               href="/our-thinking"
               className="border-2 border-white text-white px-8 py-4 rounded-md font-medium hover:bg-white hover:text-[#66899b] transition-colors duration-200 inline-flex items-center justify-center"
             >
-              Read Louise's Insights
+              Read Louise&apos;s Insights
               <ChevronRight className="ml-2 w-4 h-4" />
             </Link>
           </div>

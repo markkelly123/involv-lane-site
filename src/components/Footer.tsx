@@ -19,7 +19,7 @@ const Footer = () => {
               />
             </div>
             <p className="text-gray-600 text-sm leading-relaxed mb-6">
-              Australia's most trusted AML advisory for Tranche 2 entities. 
+              Australia&apos;s most trusted AML advisory for Tranche 2 entities. 
               Providing expert guidance through complex regulatory landscapes.
             </p>
             <div className="text-sm text-gray-500">

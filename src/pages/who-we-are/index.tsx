@@ -117,7 +117,7 @@ const WhyLaneConsultingPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Why Lane Consulting | Australia's Trusted Tranche 2 AML Advisory</title>
+        <title>Why Lane Consulting | Australia&apos;s Trusted Tranche 2 AML Advisory</title>
         <meta name="description" content="Discover why businesses choose Lane Consulting for Tranche 2 AML compliance. Specialised expertise, pragmatic solutions, and proven results for real estate, legal, accounting, and jewellery sectors." />
         <meta name="keywords" content="Lane Consulting, Tranche 2 AML, compliance advisory, AUSTRAC, real estate compliance, legal practice AML" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -140,7 +140,7 @@ const WhyLaneConsultingPage: NextPage = () => {
               Why Choose <span className="text-[#66899b] italic">Lane Consulting</span>
             </h1>
             <p className="text-xl text-gray-300 leading-relaxed mb-8 max-w-3xl">
-              Australia's most trusted partner for Tranche 2 AML compliance. We combine deep regulatory expertise 
+              Australia&apos;s most trusted partner for Tranche 2 AML compliance. We combine deep regulatory expertise 
               with practical business understanding to deliver solutions that work.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
