@@ -8,13 +8,50 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontFamily: {
+        // Serif fonts for headings and emphasis
+        'serif': ['Playfair Display', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
+        // Sans-serif for body text and UI
+        'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+      },
+      colors: {
+        // Lane's brand colours
+        'lane': {
+          'blue': '#66899b',
+          'brown': '#9b7866', 
+          'grey': '#b0b0b0',
+          'blue-dark': '#5a7a8a',
+          'brown-dark': '#8a6b58',
+        }
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            // Override prose styling for Lane
+            h1: {
+              fontFamily: 'Playfair Display, Georgia, serif',
+              fontWeight: '700',
+            },
+            h2: {
+              fontFamily: 'Playfair Display, Georgia, serif',
+              fontWeight: '700',
+            },
+            h3: {
+              fontFamily: 'Playfair Display, Georgia, serif',
+              fontWeight: '600',
+            },
+            h4: {
+              fontFamily: 'Playfair Display, Georgia, serif',
+              fontWeight: '600',
+            },
+          },
+        },
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
+
 export default config
