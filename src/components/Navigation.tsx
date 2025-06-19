@@ -61,6 +61,15 @@ const Navigation = () => {
                     <Link href="/who-we-are/our-team" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#66899b] transition-colors">
                       Our Team
                     </Link>
+                    <Link href="/who-we-are/careers" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#66899b] transition-colors">
+                      Careers
+                    </Link>
+                    <Link href="/who-we-are/news-press-releases" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#66899b] transition-colors">
+                      News & Press
+                    </Link>
+                    <Link href="/contact" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#66899b] transition-colors">
+                      Contact
+                    </Link>
                   </div>
                 </div>
               )}
