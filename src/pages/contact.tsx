@@ -141,8 +141,8 @@ const ContactPage: NextPage = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <a href="mailto:louise@laneconsultingandadvisory.com" className="text-[#66899b] hover:underline">
-                      louise@laneconsultingandadvisory.com
+                    <a href="mailto:hello@involv.com.au" className="text-[#66899b] hover:underline">
+                      hello@involv.com.au
                     </a>
                     <p className="text-sm text-gray-600 mt-1">We typically respond within one business day.</p>
                   </div>
