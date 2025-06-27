@@ -1,27 +1,85 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Lane brand colors as CSS custom properties */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --color-lane-blue: #66899b;
+  --color-lane-brown: #9b7866;
+  --color-lane-grey: #b0b0b0;
+  --color-lane-blue-dark: #5a7a8a;
+  --color-lane-brown-dark: #8a6b58;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
+/* Reset body styling for professional site */
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: rgb(55, 65, 81); /* gray-700 */
+  background: white;
+}
+
+/* Custom font classes for Lane */
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-sans {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Typography scale for consistent sizing */
+.text-display {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.text-headline {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.text-title {
+  font-size: 2rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.text-subtitle {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* Professional spacing and layout utilities */
+.section-padding {
+  @apply py-16 lg:py-20;
+}
+
+.container-padding {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+.max-content-width {
+  @apply max-w-7xl mx-auto;
+}
+
+/* Lane-specific component styles */
+.lane-card {
+  @apply bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200;
+}
+
+.lane-button-primary {
+  @apply bg-[#66899b] text-white px-6 py-3 rounded-md font-medium hover:bg-[#5a7a8a] transition-colors duration-200 shadow-sm;
+}
+
+.lane-button-secondary {
+  @apply border-2 border-white text-white px-6 py-3 rounded-md font-medium hover:bg-white hover:text-gray-900 transition-colors duration-200;
+}
+
+.lane-link {
+  @apply text-[#66899b] hover:text-[#5a7a8a] transition-colors duration-200;
 }
